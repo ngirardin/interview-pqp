@@ -68,6 +68,7 @@ pnpm prisma migrate dev
 # Start the app
 
 ```bash
+docker compose up -d
 pnpm dev
 ```
 
