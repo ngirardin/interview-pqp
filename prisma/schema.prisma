@@ -1,0 +1,28 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model TrendingMovies {
+  id               Int      @id
+  backdropPath     String?  @map("backdrop_path")
+  title            String
+  originalTitle    String   @map("original_title")
+  overview         String
+  posterPath       String?  @map("poster_path")
+  mediaType        String   @map("media_type")
+  adult            Boolean
+  originalLanguage String   @map("original_language")
+  genreIds         Int[]    @map("genre_ids")
+  popularity       Float
+  releaseDate      DateTime @map("release_date")
+  video            Boolean
+  voteAverage      Float    @map("vote_average")
+  voteCount        Int      @map("vote_count")
+
+  @@map("trending_movies")
+}
