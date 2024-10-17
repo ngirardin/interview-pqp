@@ -1,14 +1,14 @@
-import { MovieCard } from "@/components/MovieCard";
+import { MoviesGrid } from "@/components/MoviesGrid.client";
 import { queryTrendingMoviesList } from "@/models/queryTrendingMoviesList";
 
 export default async function Home() {
-  const trendingMovies = await queryTrendingMoviesList();
+  const trendingMovies = await queryTrendingMoviesList({ page: 1 });
 
-  return (
-    <div className="grid grid-cols-4 gap-4">
-      {trendingMovies.map((movie) => (
-        <MovieCard key={movie.id} movie={movie} />
-      ))}
-    </div>
-  );
+  const handleLoadMore = async (params: { page: number }) => {
+    "use server";
+
+    return await queryTrendingMoviesList({ page: params.page });
+  };
+
+  return <MoviesGrid onLoadMore={handleLoadMore} movies={trendingMovies} />;
 }

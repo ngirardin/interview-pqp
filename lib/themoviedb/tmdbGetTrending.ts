@@ -4,8 +4,19 @@ import { env } from "../env";
 
 export type ApiTrending = Awaited<ReturnType<typeof tmdbGetTrending>>;
 
+const pages = 10;
+
 export const tmdbGetTrending = async () => {
-  const res = await axios.get("https://api.themoviedb.org/3/trending/movie/day?language=en-US", {
+  const results = await Promise.all(Array.from({ length: pages }).map((_, i) => getPage(i + 1)));
+  return results.flat();
+};
+
+const getPage = async (page: number) => {
+  const res = await axios.get("https://api.themoviedb.org/3/trending/movie/day", {
+    params: {
+      language: "en-US",
+      page,
+    },
     headers: {
       accept: "application/json",
       Authorization: `Bearer ${env.TMDB_API_KEY}`,
@@ -21,14 +32,14 @@ export const tmdbGetTrending = async () => {
         title: zod.string(),
         original_title: zod.string(),
         overview: zod.string(),
-        poster_path: zod.string(),
+        poster_path: zod.string().nullable(),
         media_type: zod.literal("movie"),
         adult: zod.boolean(),
         original_language: zod.string(),
         genre_ids: zod.array(zod.number()),
         popularity: zod.number(),
-        release_date: zod.string(),
-        video: zod.literal(false),
+        release_date: zod.string().transform((v) => (v.length > 0 ? new Date(v) : null)),
+        video: zod.boolean(),
         vote_average: zod.number(),
         vote_count: zod.number(),
       }),

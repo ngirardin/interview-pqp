@@ -8,7 +8,7 @@ async function refrehsTrendingMovies() {
   await queryTrendingMoviesClear();
   await queryTrendingMoviesAdd(trendingMovies);
 
-  console.log(`${trendingMovies.length} trending moviesstored successfully`);
+  console.log(`${trendingMovies.length} trending movies stored successfully`);
 }
 
 refrehsTrendingMovies();

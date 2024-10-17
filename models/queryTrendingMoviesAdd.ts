@@ -8,7 +8,7 @@ export const queryTrendingMoviesAdd = async (trendingMovies: ApiTrending) => {
       originalTitle: item.original_title,
       mediaType: item.media_type,
       originalLanguage: item.original_language,
-      releaseDate: new Date(item.release_date),
+      releaseDate: item.release_date ? new Date(item.release_date) : null,
       title: item.title,
       overview: item.overview,
       adult: item.adult,

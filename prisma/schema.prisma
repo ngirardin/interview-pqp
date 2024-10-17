@@ -8,21 +8,21 @@ datasource db {
 }
 
 model TrendingMovies {
-  id               Int      @id
-  backdropPath     String?  @map("backdrop_path")
+  id               Int       @id
+  backdropPath     String?   @map("backdrop_path")
   title            String
-  originalTitle    String   @map("original_title")
+  originalTitle    String    @map("original_title")
   overview         String
-  posterPath       String?  @map("poster_path")
-  mediaType        String   @map("media_type")
+  posterPath       String?   @map("poster_path")
+  mediaType        String    @map("media_type")
   adult            Boolean
-  originalLanguage String   @map("original_language")
-  genreIds         Int[]    @map("genre_ids")
+  originalLanguage String    @map("original_language")
+  genreIds         Int[]     @map("genre_ids")
   popularity       Float
-  releaseDate      DateTime @map("release_date")
+  releaseDate      DateTime? @map("release_date")
   video            Boolean
-  voteAverage      Float    @map("vote_average")
-  voteCount        Int      @map("vote_count")
+  voteAverage      Float     @map("vote_average")
+  voteCount        Int       @map("vote_count")
 
   @@map("trending_movies")
 }
