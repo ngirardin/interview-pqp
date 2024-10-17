@@ -50,7 +50,7 @@ export default async function MoviePage(props: Props) {
 
           <div className="border border-red-500h-16 overflow-hidden">{movie.overview}</div>
 
-          <p>Released {movie.releaseDate.toDateString()}</p>
+          <p>Released {movie.releaseDate?.toDateString()}</p>
         </CardContent>
         <CardFooter></CardFooter>
       </Card>
