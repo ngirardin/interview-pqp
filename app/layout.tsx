@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 
 // These styles apply to every route in the application
 import "./globals.css";
+import { Button } from "@/components/ui/button";
+import { SearchIcon } from "lucide-react";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -10,8 +13,23 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
-      <body className="container mx-auto">{children}</body>
+    <html lang="en" className="h-dvh flex flex-col">
+      <body className="flex-1 flex flex-col container mx-auto mt-4 space-y-4">
+        <div className="flex items-center justify-between">
+          <Link className="text-3xl font-bold" href="/">
+            Movie database
+          </Link>
+
+          <Link href="/search">
+            <Button className="ml-auto flex items-center gap-2" variant="ghost">
+              <SearchIcon />
+              Search
+            </Button>
+          </Link>
+        </div>
+
+        <div className="flex-1">{children}</div>
+      </body>
     </html>
   );
 }

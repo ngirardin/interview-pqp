@@ -1,10 +1,8 @@
 import Image from "next/image";
-import { ArrowLeftIcon, Badge } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { queryTrendingMoviesGet } from "@/models/queryTrendingMovieGet";
-import Link from "next/link";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
+import { Badge } from "@/components/ui/badge";
 
 type Props = {
   params: {
@@ -18,12 +16,6 @@ export default async function MoviePage(props: Props) {
 
   return (
     <div className="space-y-2">
-      <Link href="/">
-        <Button>
-          <ArrowLeftIcon /> Back
-        </Button>
-      </Link>
-
       <Card className="h-full">
         <CardHeader>
           <CardTitle className="h-8">

@@ -1,21 +1,21 @@
 "use client";
 
+import { MovieGrid } from "@/components/MovieGrid";
 import { TrendingMovies } from "@prisma/client";
-import { MovieCard } from "./MovieCard";
 import { useState, useEffect, useCallback } from "react";
 
 type Props = {
-  onLoadMore: (params: { page: number }) => Promise<TrendingMovies[]>;
+  onLoadMore?: (params: { page: number }) => Promise<TrendingMovies[]>;
   movies: TrendingMovies[];
 };
 
-export const MoviesGrid = (props: Props) => {
+export const InfiniteMovieGridClient = (props: Props) => {
   const [movies, setMovies] = useState<TrendingMovies[]>(props.movies);
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
 
   const handleLoadMore = useCallback(async () => {
-    if (loading) {
+    if (props.onLoadMore === undefined || loading) {
       return;
     }
 
@@ -41,11 +41,8 @@ export const MoviesGrid = (props: Props) => {
 
   return (
     <div>
-      <div className="grid grid-cols-5 gap-4">
-        {movies.map((movie) => (
-          <MovieCard key={movie.id} movie={movie} />
-        ))}
-      </div>
+      <MovieGrid movies={movies} />
+
       {loading && <div className="flex justify-center items-center font-bold my-4">Loading...</div>}
     </div>
   );
