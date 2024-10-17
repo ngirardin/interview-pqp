@@ -14,12 +14,16 @@ export const MovieCard = (props: Props) => {
     <Link href={`/movie/${props.movie.id}`}>
       <Card className="h-full">
         <CardHeader>
-          <CardTitle className="flex items-start gap-2 justify-between h-8">
-            {props.movie.title} {props.movie.popularity > 100 && <Badge>Popular</Badge>}
+          <CardTitle className="h-8">
+            {props.movie.title}
+            {props.movie.originalTitle !== props.movie.title && ` (${props.movie.originalTitle})`}
           </CardTitle>
-          <div className="flex items-center gap-2 text-sm">
-            <Progress className="flex-1" value={props.movie.voteAverage * 10} /> {props.movie.voteAverage} (
-            {props.movie.voteCount} votes)
+          <div className="flex items-center justify-between text-sm">
+            <div className="flex items-center gap-2">
+              <Progress className="w-24" value={props.movie.voteAverage * 10} /> {props.movie.voteAverage} (
+              {props.movie.voteCount} votes)
+            </div>
+            {props.movie.popularity > 100 && <Badge>Popular</Badge>}
           </div>
         </CardHeader>
         <CardContent className="flex flex-col gap-2 text-sm">
@@ -32,12 +36,7 @@ export const MovieCard = (props: Props) => {
             height={500}
           />
 
-          {props.movie.originalTitle !== props.movie.title && (
-            <p className="text-muted">Original title: {props.movie.originalTitle}</p>
-          )}
-
-          <div className="flex-1">{props.movie.overview}</div>
-          <p>Released {props.movie.releaseDate.toDateString()}</p>
+          <div className="truncate">{props.movie.overview}</div>
         </CardContent>
         <CardFooter></CardFooter>
       </Card>

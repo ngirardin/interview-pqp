@@ -1,4 +1,4 @@
-import { MovieCard } from "@/components/movieCard";
+import { MovieCard } from "@/components/MovieCard";
 import { queryTrendingMoviesList } from "@/models/queryTrendingMoviesList";
 
 export default async function Home() {
