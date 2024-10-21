@@ -1,5 +1,6 @@
-import prisma from "@/lib/db";
 import { TrendingMovies } from "@prisma/client";
+
+import prisma from "@/lib/db";
 
 type Params = {
   query: string;
@@ -11,6 +12,12 @@ export const queryTrendingMoviesSearch = async (params: Params): Promise<Trendin
       OR: [
         {
           title: {
+            contains: params.query,
+            mode: "insensitive",
+          },
+        },
+        {
+          originalTitle: {
             contains: params.query,
             mode: "insensitive",
           },
