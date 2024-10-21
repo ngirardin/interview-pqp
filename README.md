@@ -1,56 +1,37 @@
-https://api.themoviedb.org/3
+# Intro
 
-https://developers.themoviedb.org/3/getting-started/introduction
+## Features
 
-https://developers.themoviedb.org/3/trending/get-trending
-https://developers.themoviedb.org/3/movies/get-movie-details
+- Home page with the trending movies of the day, using infinite scroll
+- Search page
+- Movie details page with edit form and delete button
+- All the pages are protected by authentication, with hashed passwords
 
-- install next auth (logging by email / password)
+## Tech
 
-- create a page that lists the trending movies of the day or month
-
-- movie details page
-
-- search feature, results are clickable and redirect to the movie details page
-
-- store movie data in the database
-
-- home made inifinte scroll on the movie list (hand rolled)
-
-- refresh data once a day
-
-- edit move data (title required)
-
-- remove movies
-
-- advanced search
-
-- Récupérer plusieurs catégories et pouvoir changer le produit de catégorie ?
-
-# Features
-
-- axios pour les requêtes
-- env-var pour parser les variables d'environnement
-- zod pour valider les données
-- prisma pour la gestion de la base de données
-- docker pour la base de données de dev
-- script pour sync les trending movies (remplace la db par les nouvelles données)
+- Daily trending movies are stored in the database, and refreshable using a PNPM script or an API call
+- Axios + Zod to fetch and validate data from the TMDB API
+- Postgres database, launched with docker. Migrations and requests using Prisma
+- Secrets are stored in a .env file, parsed using `env-var`
+- Type checking, linting and unused dependencies checking from a PNPM script (`pnpm validate`)
 
 # Setup
 
-- Ensure that `pnpm` is installed
+- Ensure that `pnpm` and `docker` are installed
+
+- Install dependencies:
 
 ```bash
 pnpm install
 ```
 
-- Copy the .env file to .env.local
+- Copy the .env file to .env.local:
 
 ```bash
 cp .env .env.local
 ```
 
-- Add `TMDB_API_KEY` to .env.local
+- Add your `TMDB_API_KEY` to .env.local
 
 - Start the docker container
 
