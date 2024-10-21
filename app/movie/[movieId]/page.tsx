@@ -56,7 +56,7 @@ export default async function MoviePage(props: Props) {
           frameBorder="0"
         ></iframe>
 
-        {details.reviews.results.map((review) => (
+        {details.reviews.results.slice(0, 4).map((review) => (
           <div key={review.id} className="text-sm">
             <div className="font-bold">{review.author}</div>
             <div>{review.content}</div>
