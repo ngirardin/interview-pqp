@@ -35,7 +35,6 @@ export default async function MoviePage(props: Props) {
         </CardHeader>
 
         <CardContent className="flex flex-col gap-2 text-sm">
-          <p className="text-red-500">Genre: {movie.genreIds.join(", ")}</p>
           <Image
             className="rounded-md aspect-video"
             src={`https://image.tmdb.org/t/p/w500${movie.backdropPath}`}

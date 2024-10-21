@@ -34,9 +34,7 @@ export const MovieCard = (props: Props) => {
             {props.movie.originalTitle !== props.movie.title && ` (${props.movie.originalTitle})`}
           </CardTitle>
 
-          <div className="truncate">{props.movie.overview}</div>
-
-          <p className="text-red-500">Genre: {props.movie.genreIds.join(", ")}</p>
+          <div className="line-clamp-4">{props.movie.overview}</div>
         </CardContent>
       </Card>
     </Link>
