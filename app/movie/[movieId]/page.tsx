@@ -3,7 +3,7 @@ import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
-import { getSessionOrRedirect } from "@/lib/auth/getSession";
+import { getSessionOrRedirect } from "@/lib/auth/getSessionOrRedirect";
 import { queryTrendingMoviesGet } from "@/models/queryTrendingMovieGet";
 
 type Props = {

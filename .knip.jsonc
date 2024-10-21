@@ -1,6 +1,7 @@
 {
   "$schema": "https://unpkg.com/knip@2/schema.json",
   "ignore": ["components/ui/**", "public/**"],
-  "ignoreDependencies": ["prettier"],
+  "ignoreDependencies": ["prettier", "autoprefixer", "@typescript-eslint/eslint-plugin", "postcss-load-config"],
   "ignoreBinaries": ["egrep"],
+  "entry": ["postcss.config.mjs"],
 }

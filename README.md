@@ -72,6 +72,10 @@ docker compose up -d
 pnpm dev
 ```
 
+## Login
+
+Use `test@test.com` and `pwd` as credentials.
+
 # Refreshing the trending movies database
 
 ```bash
