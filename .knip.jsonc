@@ -1,0 +1,6 @@
+{
+  "$schema": "https://unpkg.com/knip@2/schema.json",
+  "ignore": ["components/ui/**", "public/**"],
+  "ignoreDependencies": ["prettier"],
+  "ignoreBinaries": ["egrep"],
+}

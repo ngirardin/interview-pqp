@@ -1,3 +1,17 @@
 {
-  "extends": ["next/core-web-vitals", "next/typescript"]
+  "extends": ["next/core-web-vitals", "prettier", "plugin:@typescript-eslint/recommended"],
+  // Needed for VSCode to remove unused imports on save
+  "plugins": ["@typescript-eslint", "simple-import-sort", "unused-imports"],
+  // Need this rule for --fix to remove unused imports. See https://stackoverflow.com/a/68338238/534838
+  "rules": {
+    "@typescript-eslint/no-unused-vars": "error",
+    "@typescript-eslint/no-explicit-any": "error",
+    "unused-imports/no-unused-imports": "error",
+    // Sort imports (https://github.com/lydell/eslint-plugin-simple-import-sort/)
+    "simple-import-sort/imports": "error",
+    "simple-import-sort/exports": "error",
+    "import/first": "error",
+    "import/newline-after-import": "error"
+  },
+  "ignorePatterns": ["components/ui/**/*"]
 }

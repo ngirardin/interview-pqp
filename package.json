@@ -7,7 +7,10 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "refresh": "tsx -r dotenv/config lib/refreshTrendingMovies.ts dotenv_config_path=.env.local"
+    "refresh": "tsx -r dotenv/config lib/refreshTrendingMovies.ts dotenv_config_path=.env.local",
+    "typecheck": "tsc --noEmit -p .",
+    "unused": "knip",
+    "validate": "pnpm typecheck && pnpm lint && pnpm unused && egrep -r --exclude-dir=node_modules --exclude-dir=.next --exclude='*.js' --exclude='*.html' '(TODO|FIXME)' ."
   },
   "dependencies": {
     "@prisma/client": "5.21.0",
@@ -34,10 +37,15 @@
     "dotenv": "^16.4.5",
     "eslint": "^8",
     "eslint-config-next": "14.2.15",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-simple-import-sort": "^12.1.1",
+    "eslint-plugin-unused-imports": "^4.1.4",
+    "knip": "^5.33.3",
     "postcss": "^8",
     "prettier": "^3.3.3",
     "prisma": "^5.21.0",
     "tailwindcss": "^3.4.14",
-    "tsx": "^x.x.x"
+    "tsx": "^x.x.x",
+    "typescript": "^5.6.3"
   }
 }
