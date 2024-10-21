@@ -20,5 +20,6 @@ export const queryTrendingMoviesAdd = async (trendingMovies: ApiTrending) => {
       posterPath: item.poster_path,
       genreIds: item.genre_ids,
     })),
+    skipDuplicates: true, // Add this line to skip existing records
   });
 };

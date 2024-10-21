@@ -1,5 +1,6 @@
-import prisma from "@/lib/db";
 import { TrendingMovies } from "@prisma/client";
+
+import prisma from "@/lib/db";
 
 type Params = {
   page: number;

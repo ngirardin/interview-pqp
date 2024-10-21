@@ -3,6 +3,7 @@ import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
+import { getSessionOrRedirect } from "@/lib/auth/getSession";
 import { queryTrendingMoviesGet } from "@/models/queryTrendingMovieGet";
 
 type Props = {
@@ -12,6 +13,8 @@ type Props = {
 };
 
 export default async function MoviePage(props: Props) {
+  await getSessionOrRedirect();
+
   const movieId = Number(props.params.movieId);
   const movie = await queryTrendingMoviesGet({ movieId });
 

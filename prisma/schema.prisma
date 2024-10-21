@@ -26,3 +26,9 @@ model TrendingMovies {
 
   @@map("trending_movies")
 }
+
+model User {
+  email   String  @id
+  hash    String
+  session String? @unique
+}

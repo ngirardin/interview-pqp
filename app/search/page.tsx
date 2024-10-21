@@ -1,8 +1,11 @@
+import { getSessionOrRedirect } from "@/lib/auth/getSessionOrRedirect";
 import { queryTrendingMoviesSearch } from "@/models/queryTrendingMoviesSearch";
 
 import { SearchFormClient } from "./SearchForm.client";
 
-export default function SearchPage() {
+export default async function SearchPage() {
+  await getSessionOrRedirect();
+
   const handleSearch = async (query: string) => {
     "use server";
 

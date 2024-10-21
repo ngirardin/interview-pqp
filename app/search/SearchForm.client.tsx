@@ -14,6 +14,11 @@ export const SearchFormClient = (props: Props) => {
   const [movies, setMovies] = useState<TrendingMovies[] | undefined>(undefined);
 
   const handleSearch = async (query: string) => {
+    if (query === "") {
+      setMovies(undefined);
+      return;
+    }
+
     const movies = await props.handleSearch(query);
     setMovies(movies);
   };
@@ -30,13 +35,19 @@ export const SearchFormClient = (props: Props) => {
         />
       </div>
 
+      {movies === undefined && (
+        <div className="flex justify-center items-center text-muted-foreground my-4">
+          Enter a search term to display results
+        </div>
+      )}
+
       {movies !== undefined && (
         <>
           {movies.length === 0 ? (
-            <div className="flex justify-center items-center font-bold my-4">No movies found</div>
+            <div className="flex justify-center items-center font-bold text-muted-foreground my-4">No movies found</div>
           ) : (
             <>
-              <div>{movies.length} results</div>
+              <div className="text-muted-foreground">{movies.length} results</div>
               <MovieGrid movies={movies} />
             </>
           )}
