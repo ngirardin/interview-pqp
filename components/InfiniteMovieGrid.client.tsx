@@ -1,8 +1,9 @@
 "use client";
 
-import { MovieGrid } from "@/components/MovieGrid";
 import { TrendingMovies } from "@prisma/client";
-import { useState, useEffect, useCallback } from "react";
+import { useCallback, useEffect, useState } from "react";
+
+import { MovieGrid } from "@/components/MovieGrid";
 
 type Props = {
   onLoadMore?: (params: { page: number }) => Promise<TrendingMovies[]>;

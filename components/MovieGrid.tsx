@@ -1,4 +1,5 @@
 import { TrendingMovies } from "@prisma/client";
+
 import { MovieCard } from "./MovieCard";
 
 type Props = {

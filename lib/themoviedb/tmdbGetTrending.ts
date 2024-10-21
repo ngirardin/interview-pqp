@@ -1,5 +1,6 @@
-import zod from "zod";
 import axios from "axios";
+import zod from "zod";
+
 import { env } from "../env";
 
 export type ApiTrending = Awaited<ReturnType<typeof tmdbGetTrending>>;
@@ -7,11 +8,14 @@ export type ApiTrending = Awaited<ReturnType<typeof tmdbGetTrending>>;
 const pages = 10;
 
 export const tmdbGetTrending = async () => {
+  console.log("tmdbGetTrending");
   const results = await Promise.all(Array.from({ length: pages }).map((_, i) => getPage(i + 1)));
   return results.flat();
 };
 
 const getPage = async (page: number) => {
+  console.log(`  tmdbGetTrending.getPage(${page})`);
+
   const res = await axios.get("https://api.themoviedb.org/3/trending/movie/day", {
     params: {
       language: "en-US",

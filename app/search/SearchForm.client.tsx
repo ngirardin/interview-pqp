@@ -1,9 +1,10 @@
 "use client";
 
-import { Input } from "@/components/ui/input";
 import { TrendingMovies } from "@prisma/client/edge";
 import { useState } from "react";
+
 import { MovieGrid } from "@/components/MovieGrid";
+import { Input } from "@/components/ui/input";
 
 type Props = {
   handleSearch: (query: string) => Promise<TrendingMovies[]>;

@@ -1,10 +1,11 @@
-import type { Metadata } from "next";
-
 // These styles apply to every route in the application
 import "./globals.css";
-import { Button } from "@/components/ui/button";
+
 import { SearchIcon } from "lucide-react";
+import type { Metadata } from "next";
 import Link from "next/link";
+
+import { Button } from "@/components/ui/button";
 
 export const metadata: Metadata = {
   title: "Create Next App",

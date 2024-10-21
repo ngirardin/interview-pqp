@@ -1,5 +1,6 @@
 import { queryTrendingMoviesList } from "@/models/queryTrendingMoviesList";
-import { InfiniteMovieGridClient } from "../components/InfiniteMovieGridclient";
+
+import { InfiniteMovieGridClient } from "../components/InfiniteMovieGrid.client";
 
 export default async function Home() {
   const trendingMovies = await queryTrendingMoviesList({ page: 1 });

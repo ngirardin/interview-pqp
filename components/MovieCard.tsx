@@ -1,9 +1,10 @@
-import Image from "next/image";
 import { TrendingMovies } from "@prisma/client";
-import { Card, CardContent, CardTitle } from "./ui/card";
+import Image from "next/image";
 import Link from "next/link";
-import { Progress } from "./ui/progress";
+
 import { Badge } from "./ui/badge";
+import { Card, CardContent, CardTitle } from "./ui/card";
+import { Progress } from "./ui/progress";
 
 type Props = {
   movie: TrendingMovies;

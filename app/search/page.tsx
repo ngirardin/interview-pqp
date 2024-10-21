@@ -1,4 +1,5 @@
 import { queryTrendingMoviesSearch } from "@/models/queryTrendingMoviesSearch";
+
 import { SearchFormClient } from "./SearchForm.client";
 
 export default function SearchPage() {

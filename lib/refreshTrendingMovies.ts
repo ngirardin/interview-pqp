@@ -1,6 +1,7 @@
-import { queryTrendingMoviesClear } from "@/models/queryTrendingMoviesClear";
-import { tmdbGetTrending } from "./themoviedb/tmdbGetTrending";
 import { queryTrendingMoviesAdd } from "@/models/queryTrendingMoviesAdd";
+import { queryTrendingMoviesClear } from "@/models/queryTrendingMoviesClear";
+
+import { tmdbGetTrending } from "./themoviedb/tmdbGetTrending";
 
 async function refrehsTrendingMovies() {
   const trendingMovies = await tmdbGetTrending();

@@ -1,8 +1,9 @@
 import Image from "next/image";
-import { queryTrendingMoviesGet } from "@/models/queryTrendingMovieGet";
+
+import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
-import { Badge } from "@/components/ui/badge";
+import { queryTrendingMoviesGet } from "@/models/queryTrendingMovieGet";
 
 type Props = {
   params: {
