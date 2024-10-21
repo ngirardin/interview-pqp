@@ -24,7 +24,7 @@ export const MovieCard = (props: Props) => {
           />
 
           <div className="flex items-center gap-2 justify-between">
-            <Progress className="w-24" value={props.movie.voteAverage * 10} /> {props.movie.voteAverage} (
+            <Progress className="flex-1" value={props.movie.voteAverage * 10} /> {props.movie.voteAverage} (
             {props.movie.voteCount} votes)
           </div>
 
