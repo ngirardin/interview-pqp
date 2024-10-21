@@ -1,10 +1,13 @@
 import Image from "next/image";
+import Link from "next/link";
+import { redirect } from "next/navigation";
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { getSessionOrRedirect } from "@/lib/auth/getSessionOrRedirect";
 import { tmdbGetDetails } from "@/lib/themoviedb/tmdbGetDetails";
+import { queryTrendingMovieDelete } from "@/models/queryTrendingMovieDelete";
 import { queryTrendingMoviesGet } from "@/models/queryTrendingMovieGet";
 
 type Props = {
@@ -20,6 +23,13 @@ export default async function MoviePage(props: Props) {
   const movie = await queryTrendingMoviesGet({ movieId });
 
   const details = await tmdbGetDetails({ movieId });
+
+  const handleDelete = async () => {
+    "use server";
+
+    await queryTrendingMovieDelete({ movieId });
+    redirect("/");
+  };
 
   return (
     <div className="flex gap-2">
@@ -92,9 +102,15 @@ export default async function MoviePage(props: Props) {
         <div>
           <span className="font-bold">Budget:</span> ${details.budget}
         </div>
+
         <div className="ml-auto w-fit flex gap-2">
-          <Button variant="outline">Edit</Button>
-          <Button variant="destructive">Delete</Button>
+          <Link href={`/movie/${movieId}/edit`}>
+            <Button variant="outline">Edit</Button>
+          </Link>
+
+          <Button onClick={handleDelete} variant="destructive">
+            Delete
+          </Button>
         </div>
       </div>
     </div>
