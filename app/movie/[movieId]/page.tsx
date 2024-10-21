@@ -55,8 +55,6 @@ export default async function MoviePage(props: Props) {
           <Badge variant="default">{details.genres.map((genre) => genre.name).join(", ")}</Badge>
         </div>
 
-        <div>{movie.overview}</div>
-
         <iframe
           key={details.videos.results[0].id}
           id="ytplayer"
@@ -65,6 +63,8 @@ export default async function MoviePage(props: Props) {
           src={`https://www.youtube.com/embed/${details.videos.results[0].key}?autoplay=1&origin=http://localhost:3000`}
           frameBorder="0"
         ></iframe>
+
+        <div>{movie.overview}</div>
 
         {details.reviews.results.slice(0, 4).map((review) => (
           <div key={review.id} className="text-sm">
@@ -108,9 +108,11 @@ export default async function MoviePage(props: Props) {
             <Button variant="outline">Edit</Button>
           </Link>
 
-          <Button onClick={handleDelete} variant="destructive">
-            Delete
-          </Button>
+          <form action={handleDelete}>
+            <Button type="submit" variant="destructive">
+              Delete
+            </Button>
+          </form>
         </div>
       </div>
     </div>
