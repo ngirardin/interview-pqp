@@ -43,7 +43,7 @@ export default async function MoviePage(props: Props) {
             height={500}
           />
 
-          <div className="border border-red-500h-16 overflow-hidden">{movie.overview}</div>
+          <div>{movie.overview}</div>
 
           <p>Released {movie.releaseDate?.toDateString()}</p>
         </CardContent>

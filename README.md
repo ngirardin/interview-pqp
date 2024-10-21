@@ -78,6 +78,12 @@ Use `test@test.com` and `pwd` as credentials.
 
 # Refreshing the trending movies database
 
+## Manually
+
 ```bash
-pnpm sync
+pnpm refresh
 ```
+
+## Periodically
+
+Create a cron job that runs the `pnpm refresh` or calls `GET /api/refresh`.

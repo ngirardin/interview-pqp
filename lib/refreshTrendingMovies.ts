@@ -3,7 +3,7 @@ import { queryTrendingMoviesClear } from "@/models/queryTrendingMoviesClear";
 
 import { tmdbGetTrending } from "./themoviedb/tmdbGetTrending";
 
-async function refrehsTrendingMovies() {
+export async function refreshTrendingMovies() {
   const trendingMovies = await tmdbGetTrending();
 
   await queryTrendingMoviesClear();
@@ -12,4 +12,4 @@ async function refrehsTrendingMovies() {
   console.log(`${trendingMovies.length} trending movies stored successfully`);
 }
 
-refrehsTrendingMovies();
+refreshTrendingMovies();
